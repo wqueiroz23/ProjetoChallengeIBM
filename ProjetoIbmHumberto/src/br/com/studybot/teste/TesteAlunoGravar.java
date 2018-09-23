@@ -12,7 +12,34 @@ public class TesteAlunoGravar {
 
 		try {
 			Aluno a = new Aluno();
-		/*	a.setCdAluno(Integer.parseInt(JOptionPane.showInputDialog("digite um codigo")));
+			a.setHistorico("xxxxx");
+			a.setGrauEscolaridade("superior");
+			a.setDataFormacao("12/12/2019");
+			a.setCdAluno(55);
+			a.setNome("Jonny");
+			a.setApelido("Jow");
+			a.setRg("xxxxxxx");
+			a.setCpf("39240888888");
+			a.setData("12/12/1990");
+			a.setEmail("w7queiroz@gmail.com");
+			a.setTelefone(11);
+			a.setSenha("will1566");
+			a.setSexo("M");
+			a.setIdade(28);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/*a.setCdAluno(Integer.parseInt(JOptionPane.showInputDialog("digite um codigo")));
 			a.setNome(JOptionPane.showInputDialog("Digite seu nome"));
 			a.setApelido(JOptionPane.showInputDialog("Digite um apelido"));
 			a.setCpf(JOptionPane.showInputDialog("digite seu cpf"));
@@ -20,7 +47,7 @@ public class TesteAlunoGravar {
 			a.setEmail(JOptionPane.showInputDialog("Digite seu email"));
 			a.setGrauEscolaridade(JOptionPane.showInputDialog("Digite seu grau de escolaridade"));
 			a.setRg(JOptionPane.showInputDialog("Digite seu rg"));
-			a.setSexo((JOptionPane.showInputDialog("Digite seu sexo").charAt(0)));
+			a.setSexo((JOptionPane.showInputDialog("Digite seu sexo")));
 			a.setData(JOptionPane.showInputDialog("Digite sua data de nascimento"));
 			a.setDataFormacao(JOptionPane.showInputDialog("Digite sua data de formação"));
 			a.setHistorico(JOptionPane.showInputDialog("Digite seu historico escolar"));
