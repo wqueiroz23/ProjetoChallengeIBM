@@ -10,7 +10,7 @@ public class Aluno {
 	private String email;
 	private int telefone;
 	private String senha;
-	private char sexo;
+	private String sexo;
 	private int idade;
 	private String data;
 	private String historico;
@@ -22,7 +22,7 @@ public class Aluno {
 	
 	
 	public Aluno(int cdAluno, String nome, String apelido, String rg, String cpf, String email, int telefone,
-			String senha, char sexo, int idade, String data, String historico, String grauEscolaridade,
+			String senha, String sexo, int idade, String data, String historico, String grauEscolaridade,
 			String dataFormacao) {
 		super();
 		this.cdAluno = cdAluno;
@@ -91,10 +91,10 @@ public class Aluno {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public int getIdade() {

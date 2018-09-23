@@ -12,7 +12,7 @@ public class TesteAlunoGravar {
 
 		try {
 			Aluno a = new Aluno();
-			a.setCdAluno(Integer.parseInt(JOptionPane.showInputDialog("digite um codigo")));
+		/*	a.setCdAluno(Integer.parseInt(JOptionPane.showInputDialog("digite um codigo")));
 			a.setNome(JOptionPane.showInputDialog("Digite seu nome"));
 			a.setApelido(JOptionPane.showInputDialog("Digite um apelido"));
 			a.setCpf(JOptionPane.showInputDialog("digite seu cpf"));
@@ -25,7 +25,7 @@ public class TesteAlunoGravar {
 			a.setDataFormacao(JOptionPane.showInputDialog("Digite sua data de formação"));
 			a.setHistorico(JOptionPane.showInputDialog("Digite seu historico escolar"));
 			a.setTelefone(Integer.parseInt(JOptionPane.showInputDialog("Digite seu telefone")));
-			a.setSenha(JOptionPane.showInputDialog("digite sua senha"));
+			a.setSenha(JOptionPane.showInputDialog("digite sua senha"));*/
 			AlunoDAO dao= new AlunoDAO();
 			System.out.println(dao.addAluno(a));
 			

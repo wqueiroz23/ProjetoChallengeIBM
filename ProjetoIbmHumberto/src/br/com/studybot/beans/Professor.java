@@ -6,19 +6,19 @@ public class Professor {
 	private String nome;
 	private String apelido;
 	private String rg;
-	private int cpf;
+	private String cpf;
 	private String email;
 	private int telefone;
 	private String senha;
-	private char sexo;
+	private String sexo;
 	private int idade;
 	private String comprovantePagamento;
 	private String dataNascimento;
 	
 	
 	
-	public Professor(int cdProfessor, String nome, String apelido, String rg, int cpf, String email, int telefone,
-			String senha, char sexo, int idade, String comprovantePagamento, String dataNascimento) {
+	public Professor(int cdProfessor, String nome, String apelido, String rg, String cpf, String email, int telefone,
+			String senha, String sexo, int idade, String comprovantePagamento, String dataNascimento) {
 		super();
 		this.cdProfessor = cdProfessor;
 		this.nome = nome;
@@ -64,10 +64,10 @@ public class Professor {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public String getEmail() {
@@ -88,10 +88,10 @@ public class Professor {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public int getIdade() {

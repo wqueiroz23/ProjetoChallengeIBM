@@ -19,7 +19,7 @@ public class TestarGravarPedido {
 			pag1.setCodigo(1);
 			pag1.setDescricao("Debito");
 			
-			Aluno aluno1=new Aluno(1, "Nome", "ap","12121212", "1212", "email@email",123213, "123", 'M', 12, "12/07/1999", "sdasd", "wqdqe", "qweqwe");
+			Aluno aluno1=new Aluno(1, "Nome", "ap","12121212", "1212", "email@email",123213, "123", "M", 12, "12/07/1999", "sdasd", "wqdqe", "qweqwe");
 						
 			
 			p.setAluno(aluno1);

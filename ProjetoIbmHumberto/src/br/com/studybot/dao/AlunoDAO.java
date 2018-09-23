@@ -2,19 +2,22 @@ package br.com.studybot.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import br.com.studybot.beans.Aluno;
 import br.com.studybot.conexao.Conexao;
 
 public class AlunoDAO {
 
-	private Connection minhaConexao;
+	private Connection con;
+	private PreparedStatement stmt;
+	private ResultSet rs;
 	
 	public AlunoDAO()throws Exception {
-		this.minhaConexao = new Conexao().getConexao();
+		this.con = new Conexao().getConexao();
 	}
 		public String addAluno(Aluno aluno)throws Exception {
-		PreparedStatement stmt = minhaConexao.prepareStatement("INSERT INTO T_STB_ALUNO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		 stmt = con.prepareStatement("INSERT INTO T_STB_ALUNO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		stmt.setString(1, aluno.getHistorico());
 		stmt.setString(2, aluno.getGrauEscolaridade());
 		stmt.setString(3, aluno.getDataFormacao());
@@ -36,13 +39,44 @@ public class AlunoDAO {
 		
 		
 		public int excluirAluno(Aluno aluno)throws Exception {
-			PreparedStatement stmt = minhaConexao.prepareStatement("DELETE FROM T_STB_ALUNO WHERE CD_ALUNO=?");
+			stmt = con.prepareStatement("DELETE FROM T_STB_ALUNO WHERE CD_ALUNO=?");
 			stmt.setInt(1, aluno.getCdAluno());
 			return stmt.executeUpdate();
 		}
 		
 		public void fechar()throws Exception{
-			minhaConexao.close();
+			con.close();
+		}
+		
+		
+		public Aluno mostrarPorNome(String nome)throws Exception{
+			
+			Aluno aluno1=new Aluno();
+			stmt=con.prepareStatement("SELECT FROM T_STB_ALUNO WHERE NM_ALUNO=?");
+			stmt.setString(1, aluno1.getNome());
+			rs=stmt.executeQuery();
+			if(rs.next()) {
+			aluno1.setHistorico(rs.getString("DS_HISTORICO"));
+		    aluno1.setGrauEscolaridade(rs.getString("DS_GRAU_ESCOLARIDADE"));
+			aluno1.setDataFormacao(rs.getString("DT_ANO_FORMAÇÃO"));
+			aluno1.setCdAluno(rs.getInt("CD_ALUNO"));
+			aluno1.setNome(rs.getString("NM_APELIDO"));
+			aluno1.setApelido(rs.getString("NM_APELIDO"));
+			aluno1.setRg(rs.getString("NR_RG"));
+			aluno1.setCpf(rs.getString("NR_CPF"));
+			aluno1.setData(rs.getString("DT_NASCIMENTO"));
+			aluno1.setEmail(rs.getString("DS_EMAIL"));
+			aluno1.setTelefone(rs.getInt("NR_TELEFONE"));
+			aluno1.setSenha(rs.getString("NR_SENHA"));
+			aluno1.setSexo(rs.getString("DS_SEXO"));
+			aluno1.setIdade(rs.getInt("NR_IDADE"));
+			}
+			
+			rs.close();
+			
+			
+			return aluno1;
+			
 		}
 		
 		

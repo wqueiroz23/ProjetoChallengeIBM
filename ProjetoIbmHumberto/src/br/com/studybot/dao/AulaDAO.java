@@ -9,24 +9,24 @@ import br.com.studybot.conexao.Conexao;
 
 public class AulaDAO {
 
-	private Connection conexao;
+	private Connection con;
 	private PreparedStatement stmt;
 	private ResultSet rs;
 
 	public AulaDAO() throws Exception {
-		conexao = new Conexao().getConexao();
+		con = new Conexao().getConexao();
 
 	}
 
 	public String fechar() throws Exception {
 
-		conexao.close();
+		con.close();
 		return "fechou";
 	}
 
 	public String adicionar(Aula a1)throws Exception {
 		
-		stmt=conexao.prepareStatement("INSERT INTO T_STB_AULA(CD_AULA,NM_AULA,DS_DURACAO,CD_DISCIPLINA,CD_CURSO,CD_PROFESSOR"
+		stmt=con.prepareStatement("INSERT INTO T_STB_AULA(CD_AULA,NM_AULA,DS_DURACAO,CD_DISCIPLINA,CD_CURSO,CD_PROFESSOR"
 				                   + "VALUES (?,?,?,?,?,?)");
 		stmt.setInt(1,a1.getCodigo());
 		stmt.setString(2,a1.getNome());
@@ -39,6 +39,12 @@ public class AulaDAO {
 		
 		
 		return"Cadastrado com sucesso";	
+	}
+	
+	public int excluirAula(Aula aula)throws Exception {
+		stmt = con.prepareStatement("DELETE FROM T_STB_AULA WHERE CD_AULA=?");
+		stmt.setInt(1, aula.getCodigo());
+		return stmt.executeUpdate();
 	}
 	
 	

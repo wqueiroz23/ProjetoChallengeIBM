@@ -17,19 +17,20 @@ public class ProfessorDAO {
 	
 	public String addProfessor(Professor pro)throws Exception {
 		PreparedStatement stmt= minhaConexao.prepareStatement("INSERT INTO T_STB_PROFESSOR VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-		stmt.setString(1,pro.getComprovantePagamento());
-		stmt.setInt(2, pro.getCdProfessor());
-		stmt.setString(3, pro.getNome());
-		stmt.setString(4, pro.getApelido());
-		stmt.setString(5, pro.getRg());
-		stmt.setInt(6, pro.getCpf());
-		stmt.setString(7, pro.getDataNascimento());
-		stmt.setString(8, pro.getEmail());
-		stmt.setInt(9,pro.getTelefone());
-		stmt.setString(10, pro.getSenha());
-		stmt.setLong(11, pro.getSexo());
-		stmt.setInt(12, pro.getIdade());
+		
+		stmt.setInt(1, pro.getCdProfessor());
+		stmt.setString(2, pro.getNome());
+		stmt.setString(3, pro.getApelido());
+		stmt.setString(4, pro.getRg());
+		stmt.setString(5, pro.getCpf());
+		stmt.setString(6, pro.getDataNascimento());
+		stmt.setString(7, pro.getEmail());
+		stmt.setInt(8,pro.getTelefone());
+		stmt.setString(9, pro.getSenha());
+		stmt.setString(10, pro.getSexo());
+		stmt.setInt(11, pro.getIdade());
 		stmt.executeUpdate();
+		
 		return "Adicionado";
 	}
 	
