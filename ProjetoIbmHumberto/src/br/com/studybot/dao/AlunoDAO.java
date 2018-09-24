@@ -3,6 +3,8 @@ package br.com.studybot.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.studybot.beans.Aluno;
 import br.com.studybot.conexao.Conexao;
@@ -49,33 +51,34 @@ public class AlunoDAO {
 		}
 		
 		
-		public Aluno mostrarPorNome(String nome)throws Exception{
+		public List<Aluno> mostrarPorNome(String nome)throws Exception{
+			List<Aluno>lista=new ArrayList<Aluno>();
 			
-			Aluno aluno1=new Aluno();
-			stmt=con.prepareStatement("SELECT FROM T_STB_ALUNO WHERE NM_ALUNO=?");
-			stmt.setString(1, aluno1.getNome());
+			stmt=con.prepareStatement("SELECT * FROM T_STB_ALUNO WHERE NM_ALUNO LIKE ?");
+			stmt.setString(1, nome + "%");
 			rs=stmt.executeQuery();
-			if(rs.next()) {
-			aluno1.setHistorico(rs.getString("DS_HISTORICO"));
-		    aluno1.setGrauEscolaridade(rs.getString("DS_GRAU_ESCOLARIDADE"));
-			aluno1.setDataFormacao(rs.getString("DT_ANO_FORMAÇÃO"));
-			aluno1.setCdAluno(rs.getInt("CD_ALUNO"));
-			aluno1.setNome(rs.getString("NM_APELIDO"));
-			aluno1.setApelido(rs.getString("NM_APELIDO"));
-			aluno1.setRg(rs.getString("NR_RG"));
-			aluno1.setCpf(rs.getString("NR_CPF"));
-			aluno1.setData(rs.getString("DT_NASCIMENTO"));
-			aluno1.setEmail(rs.getString("DS_EMAIL"));
-			aluno1.setTelefone(rs.getInt("NR_TELEFONE"));
-			aluno1.setSenha(rs.getString("NR_SENHA"));
-			aluno1.setSexo(rs.getString("DS_SEXO"));
-			aluno1.setIdade(rs.getInt("NR_IDADE"));
+			while(rs.next()) {
+				lista.add(new Aluno(
+						rs.getInt("CD_ALUNO"),
+						rs.getString("NM_ALUNO"),
+						rs.getString("NM_APELIDO"),
+						rs.getString("NR_RG"),
+						rs.getString("NR_CPF"),
+						rs.getString("DS_EMAIL"),
+						rs.getInt("NR_TELEFONE"),
+						rs.getString("NR_SENHA"),
+						rs.getString("DS_SEXO"),
+						rs.getInt("NR_IDADE"),
+						rs.getString("DT_NASCIMENTO"),
+						rs.getString("DS_HISTORICO"),
+						rs.getString("DS_GRAU_ESCOLARIDADE"),
+						rs.getString("DT_ANO_FORMACAO")));
 			}
 			
 			rs.close();
 			
 			
-			return aluno1;
+			return lista;
 			
 		}
 		
