@@ -3,6 +3,9 @@ package br.com.studybot.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.studybot.beans.Aula;
 import br.com.studybot.conexao.Conexao;
@@ -45,6 +48,33 @@ public class AulaDAO {
 		stmt = con.prepareStatement("DELETE FROM T_STB_AULA WHERE CD_AULA=?");
 		stmt.setInt(1, aula.getCodigo());
 		return stmt.executeUpdate();
+	}
+	
+	
+	
+	public List<Aula>mostrarAula(String nome) throws SQLException{
+		
+		List<Aula>lista=new ArrayList<Aula>();
+		stmt=con.prepareStatement("SELECT * FROM T_STB_AULA WHERE NM_AULA LIKE ?");
+		
+		stmt.setString(1, nome+"%");
+		rs=stmt.executeQuery();
+		
+		while(rs.next()) {
+			lista.add(new Aula(
+					rs.getInt("CD_AULA"),
+					rs.getString("NM_AULA"),
+					rs.getString("DS_DURACAO"),
+					rs.getInt("CD_DISCIPLINA"),
+					rs.getInt("CD_CURSO"),
+					rs.getInt("CD_PROFESSOR")));
+			
+		}
+				rs.close();
+				
+				return lista;
+		
+		
 	}
 	
 	

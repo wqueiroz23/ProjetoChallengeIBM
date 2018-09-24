@@ -10,6 +10,12 @@ public class Aula {
 	private Disciplina disciplina;
 	
 	
+	public Aula() {
+		// TODO Auto-generated constructor stub
+	}
+	public Aula(int int1, String string, String string2, int int2, int int3, int int4) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getCodigo() {
 		return codigo;
 	}
